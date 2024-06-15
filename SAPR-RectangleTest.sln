@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAPR-RectangleTest", "SAPR-RectangleTest\SAPR-RectangleTest.csproj", "{2730C16A-5EB3-4BD5-9FB4-1874D8B80536}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2730C16A-5EB3-4BD5-9FB4-1874D8B80536}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2730C16A-5EB3-4BD5-9FB4-1874D8B80536}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2730C16A-5EB3-4BD5-9FB4-1874D8B80536}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2730C16A-5EB3-4BD5-9FB4-1874D8B80536}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8322B078-4BD3-41E1-B36D-3B05A16434F1}
+	EndGlobalSection
+EndGlobal
