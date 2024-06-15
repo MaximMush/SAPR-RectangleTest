@@ -46,7 +46,7 @@ rectangles = SecondaryRectanglesInputManager.GetRectangles();
 for (int i = 0; i < rectangles.Count; i++)
 {
 	logMessage += $"Второстепенный прямоугольник{i}:\n";
-	logMessage += $"Левая верхняя точка = [{rectangles[i].TopLeft.X}, {rectangles[i].TopLeft.Y}]\n, Правая верхняя точка = [{rectangles[i].TopRight.X}, {rectangles[i].TopRight.X}]\n" +
+	logMessage += $"Левая верхняя точка = [{rectangles[i].TopLeft.X}, {rectangles[i].TopLeft.Y}]\n, Правая верхняя точка = [{rectangles[i].TopRight.X}, {rectangles[i].TopRight.Y}]\n" +
 		$", Левая нижняя точка = [{rectangles[i].BotLeft.X}, {rectangles[i].BotLeft.Y}]\n, Правая нижняя точка = [{rectangles[i].BotRight.X}, {rectangles[i].BotRight.Y}]\n" +
 		$", Цвет =  {rectangles[i].FillColor}\n";
 }
@@ -57,7 +57,7 @@ Rectangle mainRectangle;
 mainRectangle = CreatorRectangle.GetMainRectangle(rectangles);
 
 logMessage += "Главный прямоугольник очертивший крайние точки второстепенных прямоугольников:\n";
-logMessage += $"Левая верхняя точка = [{mainRectangle.TopLeft.X}, {mainRectangle.TopLeft.Y}]\n, Правая верхняя точка = [{mainRectangle.TopRight.X}, {mainRectangle.TopRight.X}]\n" +
+logMessage += $"Левая верхняя точка = [{mainRectangle.TopLeft.X}, {mainRectangle.TopLeft.Y}]\n, Правая верхняя точка = [{mainRectangle.TopRight.X}, {mainRectangle.TopRight.Y}]\n" +
         $", Левая нижняя точка = [{mainRectangle.BotLeft.X}, {mainRectangle.BotLeft.Y}]\n, Правая нижняя точка = [{mainRectangle.BotRight.X}, {mainRectangle.BotRight.Y}]\n" +
         $", Цвет =  {mainRectangle.FillColor}\n";
 
