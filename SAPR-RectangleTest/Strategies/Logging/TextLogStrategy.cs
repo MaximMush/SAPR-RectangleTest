@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAPR_RectangleTest
+namespace SAPR_RectangleTest.Strategies.Logging
 {
     public class TextLogStrategy : LogStrategy
     {
@@ -13,16 +13,16 @@ namespace SAPR_RectangleTest
             filePath = _filePath;
         }
         protected string logMessage = string.Empty;
-        public override string LogMessage 
+        public override string LogMessage
         {
             get { return logMessage; }
-            set { logMessage = value; } 
+            set { logMessage = value; }
         }
 
         protected string filePath = string.Empty;
 
         public override void Log()
-        { 
+        {
             Console.WriteLine(logMessage);
         }
     }

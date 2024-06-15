@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAPR_RectangleTest
+namespace SAPR_RectangleTest.Strategies.Logging
 {
     public interface ILogStrategy
     {
-       public void Log();
+        void Log();
     }
     public abstract class LogStrategy : ILogStrategy
     {
