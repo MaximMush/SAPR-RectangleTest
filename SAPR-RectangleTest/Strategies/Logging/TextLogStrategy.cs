@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace SAPR_RectangleTest.Strategies.Logging
 {
@@ -23,7 +24,11 @@ namespace SAPR_RectangleTest.Strategies.Logging
 
         public override void Log()
         {
-            Console.WriteLine(logMessage);
+            using (StreamWriter writer = new StreamWriter(filePath))
+            {
+                writer.WriteLine(logMessage);
+            }
+
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using SAPR_RectangleTest.Strategies.Ignore;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -36,10 +36,10 @@ namespace SAPR_RectangleTest
 
         public Rectangle ReDrawMainRectangle(List<Rectangle> secondaryRectangles)
         {
-            var minX = secondaryRectangles.Min(r => r.TopLeft.X);
-            var minY = secondaryRectangles.Min(r => r.TopLeft.Y);
-            var maxX = secondaryRectangles.Max(r => r.BotRight.X);
-            var maxY = secondaryRectangles.Max(r => r.BotRight.Y);
+            var minX = secondaryRectangles.Min(r => r.BotLeft.X);
+            var minY = secondaryRectangles.Min(r => r.BotLeft.Y);
+            var maxX = secondaryRectangles.Max(r => r.TopRight.X);
+            var maxY = secondaryRectangles.Max(r => r.TopRight.Y);
 
             var mainRectangle = new Rectangle(
                 new Point(minX, minY),
@@ -51,14 +51,11 @@ namespace SAPR_RectangleTest
             return mainRectangle;
         }
 
-        public static Rectangle RedrawWithIgnoredPoints(Rectangle userMainRectangle, List<Rectangle> secondaryRectangles)
+        public static Rectangle Ignore(Rectangle userMainRectangle, List<Rectangle> secondaryRectangles)
         {
-            double minX = userMainRectangle.TopLeft.X;
-
-            double minY = userMainRectangle.TopLeft.Y;
-
-            double maxX = userMainRectangle.BotRight.X;
-
+            double minX = userMainRectangle.TopRight.X;
+            double minY = userMainRectangle.TopRight.Y;
+            double maxX = userMainRectangle.BotLeft.X;
             double maxY = userMainRectangle.BotRight.Y;
 
             foreach (var rect in secondaryRectangles)
@@ -66,36 +63,26 @@ namespace SAPR_RectangleTest
                 if (IsPointInsideMainRectangle(userMainRectangle, rect.BotLeft))
                 {
                     minX = Math.Min(minX, rect.BotLeft.X);
-                    minY = Math.Min(minY, rect.BotLeft.Y);
-                    maxX = Math.Max(maxX, rect.BotLeft.X);
-                    maxY = Math.Max(maxY, rect.BotLeft.Y);
                 }
 
                 if (IsPointInsideMainRectangle(userMainRectangle, rect.TopLeft))
                 {
                     minX = Math.Min(minX, rect.TopLeft.X);
-                    minY = Math.Min(minY, rect.TopLeft.Y);
-                    maxX = Math.Max(maxX, rect.TopLeft.X);
-                    maxY = Math.Max(maxY, rect.TopLeft.Y);
+                    minY = Math.Min(minY, rect.BotLeft.Y);
                 }
 
                 if (IsPointInsideMainRectangle(userMainRectangle, rect.BotRight))
                 {
-                    minX = Math.Min(minX, rect.BotRight.X);
-                    minY = Math.Min(minY, rect.BotRight.Y);
                     maxX = Math.Max(maxX, rect.BotRight.X);
                     maxY = Math.Max(maxY, rect.BotRight.Y);
                 }
 
                 if (IsPointInsideMainRectangle(userMainRectangle, rect.TopRight))
                 {
-                    minX = Math.Min(minX, rect.TopRight.X);
-                    minY = Math.Min(minY, rect.TopRight.Y);
+                    minY = Math.Min(minY, rect.BotLeft.Y);
                     maxX = Math.Max(maxX, rect.TopRight.X);
-                    maxY = Math.Max(maxY, rect.TopRight.Y);
                 }
             }
-
 
             Rectangle newRectangle = new Rectangle(
                 new Point(minX, minY),
@@ -106,15 +93,12 @@ namespace SAPR_RectangleTest
             return newRectangle;
         }
 
-        public static Rectangle RedrawWithIgnoredColors(Rectangle userMainRectangle, List<Rectangle> secondaryRectangles, List<string> colors)
+        public static Rectangle Ignore(Rectangle userMainRectangle, List<Rectangle> secondaryRectangles, List<string> colors)
         {
-            double minX = userMainRectangle.TopLeft.X;
-
-            double minY = userMainRectangle.TopLeft.Y;
-
-            double maxX = userMainRectangle.BotRight.X;
-
-            double maxY = userMainRectangle.BotRight.Y;
+            double minX = userMainRectangle.TopRight.X;
+            double minY = userMainRectangle.TopRight.Y;
+            double maxX = userMainRectangle.BotLeft.X;
+            double maxY = userMainRectangle.BotLeft.Y;
 
             foreach (var rect in secondaryRectangles)
             {
@@ -123,33 +107,24 @@ namespace SAPR_RectangleTest
                     if (IsPointInsideMainRectangle(userMainRectangle, rect.BotLeft))
                     {
                         minX = Math.Min(minX, rect.BotLeft.X);
-                        minY = Math.Min(minY, rect.BotLeft.Y);
-                        maxX = Math.Max(maxX, rect.BotLeft.X);
-                        maxY = Math.Max(maxY, rect.BotLeft.Y);
                     }
 
                     if (IsPointInsideMainRectangle(userMainRectangle, rect.TopLeft))
                     {
                         minX = Math.Min(minX, rect.TopLeft.X);
-                        minY = Math.Min(minY, rect.TopLeft.Y);
-                        maxX = Math.Max(maxX, rect.TopLeft.X);
-                        maxY = Math.Max(maxY, rect.TopLeft.Y);
+                        minY = Math.Min(minY, rect.BotLeft.Y); 
                     }
 
                     if (IsPointInsideMainRectangle(userMainRectangle, rect.BotRight))
                     {
-                        minX = Math.Min(minX, rect.BotRight.X);
-                        minY = Math.Min(minY, rect.BotRight.Y);
                         maxX = Math.Max(maxX, rect.BotRight.X);
-                        maxY = Math.Max(maxY, rect.BotRight.Y);
+                        maxY = Math.Max(maxY, rect.TopRight.Y);
                     }
 
                     if (IsPointInsideMainRectangle(userMainRectangle, rect.TopRight))
                     {
-                        minX = Math.Min(minX, rect.TopRight.X);
-                        minY = Math.Min(minY, rect.TopRight.Y);
+                        minY = Math.Min(minY, rect.BotLeft.Y); 
                         maxX = Math.Max(maxX, rect.TopRight.X);
-                        maxY = Math.Max(maxY, rect.TopRight.Y);
                     }
                 }
             }
@@ -160,15 +135,18 @@ namespace SAPR_RectangleTest
                 new Point(maxX, minY),
                 new Point(maxX, maxY));
 
-            return newRectangle;
+            return newRectangle;    
         }
+
 
         public static bool IsPointInsideMainRectangle(Rectangle mainRectangle, Point point)
         {
-            return point.X >= mainRectangle.TopLeft.X &&
-                   point.Y >= mainRectangle.TopLeft.Y &&
-                   point.X <= mainRectangle.BotRight.X &&
-                   point.Y <= mainRectangle.BotRight.Y;
+            return point.X >= mainRectangle.TopLeft.X && 
+                   point.X <= mainRectangle.BotRight.X && 
+                   point.Y <= mainRectangle.TopLeft.Y &&  
+                   point.Y >= mainRectangle.BotRight.Y;  
         }
+
+
     }
 }

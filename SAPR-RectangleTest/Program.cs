@@ -94,19 +94,22 @@ for (int i = 0; i < rectangles.Count; i++)
 		$", - Левая нижняя точка = [{rectangles[i].BotLeft.X}, {rectangles[i].BotLeft.Y}],\n - Правая нижняя точка = [{rectangles[i].BotRight.X}, {rectangles[i].BotRight.Y}],\n" +
 		$", - Цвет =  {rectangles[i].FillColor}\n";
 }
-logMessage += "\n";
 
-logMessage += "Перерисовываю главный прямоугольник...\n";
-
-mainRectangle = mainRectangle.ReDrawMainRectangle(rectangles);
-
-if (userIgnoreChoice == "Y" || userIgnoreChoice == "y")
+if (userIgnoreChoice == "N" || userIgnoreChoice == "n")
 {
     logMessage += "\n";
 
     logMessage += "Перерисовываю главный прямоугольник c учётом проигнорированных точек...\n";
 
-    mainRectangle = Rectangle.RedrawWithIgnoredPoints(mainRectangle, rectangles);
+    mainRectangle = Rectangle.Ignore(mainRectangle, rectangles);
+}
+else
+{
+    logMessage += "\n";
+
+    logMessage += "Перерисовываю главный прямоугольник...\n";
+
+    mainRectangle = mainRectangle.ReDrawMainRectangle(rectangles);
 }
 
 //Последовательность операций соблюдена с условием ТЗ
@@ -137,7 +140,7 @@ if (userIgnoreColorsChoice == "Y" || userIgnoreColorsChoice == "y")
         }
     }
 
-    mainRectangle = Rectangle.RedrawWithIgnoredColors(mainRectangle, rectangles, colors);
+    mainRectangle = Rectangle.Ignore(mainRectangle, rectangles, colors);
 }
 
 logMessage += "Главный прямоугольник очертивший крайние точки второстепенных прямоугольников:\n";
